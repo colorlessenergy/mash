@@ -42,7 +42,6 @@ exports.getAllPosts = function (req, res, next) {
  */
 
  exports.getPostById = function (req, res, next) {
-   console.log(req.params)
    Posts.findById(req.params.id)
     .then(function (post) {
       console.log(post)
