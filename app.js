@@ -18,9 +18,11 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 
-const postRouter = require('./routes/PostRouter');
+const postRouter = require('./routes/postRouter');
+const userRouter = require('./routes/userRouter');
 
 app.use('/posts', postRouter);
+app.use('/users', userRouter);
 
 app.listen(process.env.PORT || 3001, function () {
   console.log('backend server is running')
