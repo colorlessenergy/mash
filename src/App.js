@@ -1,11 +1,27 @@
 import React from 'react';
 
+import {
+  BrowserRouter,
+  Switch,
+  Route
+} from 'react-router-dom';
+
+
+import Layout from './Layout/Layout';
+import Login from './Components/Login/Login';
+import Home from './Components/Home/Home';
+
 function App() {
   return (
     <div className="App">
-      <h1>
-        SUPER SMASH BROTHERS ULTIMATE
-      </h1>
+      <Layout>
+        <BrowserRouter>
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/login' exact component={Login} />     
+          </Switch>
+        </BrowserRouter>
+      </Layout>
     </div>
   );
 }
