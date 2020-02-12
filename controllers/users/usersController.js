@@ -13,8 +13,8 @@ exports.createUser = function (req, res, next) {
   const user = new Users(req.body);
 
   user.save()
-    .then(function () {
-      return res.sendStatus(200);
+    .then(function (newUser) {
+      return res.json(newUser).status(200);
     })
     .catch(function (err) {
       return res.status(401).send(err);
