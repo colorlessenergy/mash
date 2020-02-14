@@ -24,6 +24,12 @@ const userRouter = require('./routes/userRouter');
 app.use('/posts', postRouter);
 app.use('/users', userRouter);
 
+// error handler
+app.use(function (err, req, res, next) {
+  console.log(err)
+  res.status(err.status || 500).send(err.message);
+});
+
 app.listen(process.env.PORT || 3001, function () {
   console.log('backend server is running')
 });
