@@ -19,8 +19,21 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
+  token: {
+    type: String
+  },
   posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
 });
+
+userSchema.methods.comparePassword = function (password, cb) {
+  bcrypt.compare(password, this.password)
+    .then(function (res) {
+      return cb(null, res)
+    })
+    .catch(function (err) {
+      return cb(err);
+    });
+}
 
 userSchema.pre('save', function (next) {
   if (!this.email) {

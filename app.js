@@ -4,7 +4,9 @@ const app = express();
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://mash:mash123@ds253857.mlab.com:53857/mash', {
+const config = require('./config/config');
+
+mongoose.connect(config.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -20,7 +22,9 @@ app.use(bodyParser.json());
 
 const postRouter = require('./routes/postRouter');
 const userRouter = require('./routes/userRouter');
+const authRouter = require('./routes/authRouter');
 
+app.use('/auth', authRouter);
 app.use('/posts', postRouter);
 app.use('/users', userRouter);
 
