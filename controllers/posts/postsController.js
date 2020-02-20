@@ -44,11 +44,9 @@ exports.getAllPosts = function (req, res, next) {
  exports.getPostById = function (req, res, next) {
    Posts.findById(req.params.id)
     .then(function (post) {
-      console.log(post)
       return res.json(post);
     })
     .catch(function (err) {
-      console.log(err)
       return res.status(401).send('a post with that id does not exist');
     });
  }

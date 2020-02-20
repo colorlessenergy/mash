@@ -13,6 +13,16 @@ mongoose.connect(config.DB_URL, {
   .then(() => console.log('connected to DB'))
   .catch(err => console.log('there was an error ' + err));
 
+
+const cors = require('cors');
+
+app.use(cors(
+  {
+    origin: config.FRONTEND_URL,
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
+));
+
 const bodyParser = require('body-parser');
 
 // dump json in body into req.body
