@@ -19,11 +19,6 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
-  character: {
-    type: String,
-    require: true,
-    unique: true
-  },
   token: {
     type: String
   },
