@@ -9,13 +9,23 @@ let initState = {
 const postReducer = (state = initState, action) => {
   switch (action.type) {
     case actionTypes.RETRIEVE_POSTS_SUCCESS:
-      console.log(action)
       return {
         posts: action.posts,
         error: ''
       }
 
     case actionTypes.RETRIEVE_POSTS_ERROR:
+      return {
+        error: action.error
+      }
+
+    case actionTypes.RETRIEVE_SINGLE_POST_SUCCESS:
+      return {
+        post: action.post,
+        error: ''
+      }
+    
+    case actionTypes.RETRIEVE_SINGLE_POSTS_ERROR:
       return {
         error: action.error
       }

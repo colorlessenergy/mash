@@ -10,6 +10,7 @@ import {
 import Layout from './Layout/Layout';
 import Login from './Components/Login/Login';
 import Home from './Components/Home/Home';
+import ViewSinglePost from './Components/Post/ViewSinglePost/ViewSinglePost';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path='/' exact component={Home} />
-            <Route path='/login' exact component={Login} />     
+            <Route path='/login' exact component={Login} />
+            <Route path='/post/:id' exact component={ViewSinglePost} />
           </Switch>
         </BrowserRouter>
       </Layout>
