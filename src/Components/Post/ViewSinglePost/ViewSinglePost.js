@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { getSinglePostAction } from '../../../store/actions/postAction';
 
@@ -12,8 +13,15 @@ class ViewSinglePost extends Component {
   }
 
   render() {
+    let LinkToBeAbleToEdit;
 
-    const post = this.props.post ? (
+    if (localStorage.getItem('token')) {
+      LinkToBeAbleToEdit = (
+        <Link to={'/post/edit/' + this.props.match.params.id}> edit this page! </Link>
+      )
+    }
+
+    const Post = this.props.post ? (
       <div>
         <h1>
           {this.props.post.title}
@@ -24,7 +32,12 @@ class ViewSinglePost extends Component {
       </div>
     ) : (<p> loading </p>);
 
-    return post;
+    return (
+      <div>
+        { LinkToBeAbleToEdit }
+        { Post }
+      </div>
+    );
   }
 }
 
