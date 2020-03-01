@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 import { getSinglePostAction } from '../../../store/actions/postAction';
 
+import renderHTML from 'react-render-html';
+
 class ViewSinglePost extends Component {
   componentDidMount () {
     const idOfPost = this.props.match.params.id;
@@ -27,7 +29,7 @@ class ViewSinglePost extends Component {
           {this.props.post.title}
         </h1>
         <p>
-          {this.props.post.content}
+          {renderHTML(this.props.post.content)}
         </p>
       </div>
     ) : (<p> loading </p>);

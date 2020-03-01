@@ -7,12 +7,40 @@ import { getSinglePostAction } from '../../../../store/actions/postAction';
 
 import { updateSinglePostAction } from '../../../../store/actions/postAction';
 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 
 class EditSinglePost extends Component {
   state = {
     content: '',
     dataFilled: false
   }
+
+  // config for react quill
+
+  modules = {
+    toolbar: [
+      [{ header: '1' }, { header: '2' }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['link'],
+      ['code-block']
+    ]
+  };
+
+  formats = [
+    'header',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'blockquote',
+    'list',
+    'bullet',
+    'link',
+    'code-block'
+  ];
 
   componentDidMount() {
     const idOfPost = this.props.match.params.id;
@@ -40,10 +68,10 @@ class EditSinglePost extends Component {
     }
   }
 
-  handleChange = (ev) => {
-    this.setState({ 
-      content: ev.target.value
-     });
+  handleChange = (content) => {
+    this.setState({
+      content: content
+    });
   }
 
   handleSubmit = (ev) => {
@@ -66,12 +94,23 @@ class EditSinglePost extends Component {
         <h1>edit post</h1>
 
         <form onSubmit={this.handleSubmit}>
-          <textarea onChange={this.handleChange}
-            value={this.state.content} cols='60' rows='20' />
+          <div>
+            <label
+              htmlFor='content'>
+              content
+            </label>
+            <ReactQuill
+              id="content"
+              modules={this.modules}
+              formats={this.formats}
+              value={this.state.content}
+              placeholder='write something :D'
+              onChange={this.handleChange} />
+          </div>
 
-            <button>
-              edit
-            </button>
+          <button>
+            edit
+          </button>
         </form>
 
         { this.props.error ? (
