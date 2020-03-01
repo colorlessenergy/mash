@@ -29,6 +29,14 @@ const postReducer = (state = initState, action) => {
       return {
         error: action.error
       }
+
+    case actionTypes.UPDATE_SINGLE_POST_SUCCESS:
+      return state;
+
+    case actionTypes.UPDATE_SINGLE_POST_ERROR:
+      return {
+        error: action.error
+      }
   
     default:
       return state;

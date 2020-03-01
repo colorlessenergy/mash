@@ -5,6 +5,8 @@ import { Redirect } from 'react-router-dom';
 
 import { getSinglePostAction } from '../../../../store/actions/postAction';
 
+import { updateSinglePostAction } from '../../../../store/actions/postAction';
+
 
 class EditSinglePost extends Component {
   state = {
@@ -47,8 +49,10 @@ class EditSinglePost extends Component {
   handleSubmit = (ev) => {
     ev.preventDefault();
 
-    // call dispatch here to edit a post
-
+    const idOfPost = this.props.match.params.id;
+    const history = this.props.history;
+    console.log(history)
+    this.props.updateSinglePost(idOfPost, this.state.content, history)
   }
 
   render() {
@@ -69,6 +73,13 @@ class EditSinglePost extends Component {
               edit
             </button>
         </form>
+
+        { this.props.error ? (
+          <p>
+            { this.props.error }
+          </p>
+        ): (null) }
+
       </div>
     )
   }
@@ -84,11 +95,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getSinglePost: (id) => {
-      return dispatch(getSinglePostAction(id))
+      dispatch(getSinglePostAction(id))
     },
 
-    editSinglePost: (updateContent) => {
-      // dispatch action to edit a post
+    updateSinglePost: (id, updateContent, history) => {
+      dispatch(updateSinglePostAction(id, { content: updateContent }, history));
     }
   }
 }

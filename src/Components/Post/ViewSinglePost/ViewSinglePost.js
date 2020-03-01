@@ -36,6 +36,12 @@ class ViewSinglePost extends Component {
       <div>
         { LinkToBeAbleToEdit }
         { Post }
+
+        {this.props.error ? (
+          <p>
+            {this.props.error}
+          </p>
+        ) : (null)}
       </div>
     );
   }
