@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getPostsAction } from '../../store/actions/postAction';
 
+import renderHTML from 'react-render-html';
+
 export class Home extends Component {
   componentDidMount () {
     this.props.getAllPosts();
@@ -18,7 +20,7 @@ export class Home extends Component {
               {post.title}
             </h3>
             <p>
-              {post.content}
+              {renderHTML(post.content)}
             </p>
           </Link>
         </div>

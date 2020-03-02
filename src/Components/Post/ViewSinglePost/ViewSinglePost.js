@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { getSinglePostAction } from '../../../store/actions/postAction';
+
+import renderHTML from 'react-render-html';
 
 class ViewSinglePost extends Component {
   componentDidMount () {
@@ -12,19 +15,37 @@ class ViewSinglePost extends Component {
   }
 
   render() {
+    let LinkToBeAbleToEdit;
 
-    const post = this.props.post ? (
+    if (localStorage.getItem('token')) {
+      LinkToBeAbleToEdit = (
+        <Link to={'/post/edit/' + this.props.match.params.id}> edit this page! </Link>
+      )
+    }
+
+    const Post = this.props.post ? (
       <div>
         <h1>
           {this.props.post.title}
         </h1>
         <p>
-          {this.props.post.content}
+          {renderHTML(this.props.post.content)}
         </p>
       </div>
     ) : (<p> loading </p>);
 
-    return post;
+    return (
+      <div>
+        { LinkToBeAbleToEdit }
+        { Post }
+
+        {this.props.error ? (
+          <p>
+            {this.props.error}
+          </p>
+        ) : (null)}
+      </div>
+    );
   }
 }
 

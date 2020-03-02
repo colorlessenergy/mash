@@ -23,3 +23,11 @@ export const loginUserAction = (credentials) => {
     .catch(err => dispatch({type: actionTypes.LOGIN_ERROR, error: err}));
   }
 }
+
+/**
+ * this will be used when a user tries to make a request and a error.status 403 is returned
+ */
+
+export const unauthorizedUser = () => {
+  localStorage.removeItem('token');
+}
