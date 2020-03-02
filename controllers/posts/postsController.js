@@ -46,7 +46,24 @@ exports.getAllPosts = function (req, res, next) {
     .then(function (post) {
       return res.json(post);
     })
-    .catch(function (err) {
+    .catch(function () {
       return res.status(401).send('a post with that id does not exist');
     });
  }
+
+ /**
+  * 
+  * edit a post in the DB
+  * 
+  * @param {Object} req.body.content - the updated content 
+  */
+
+  exports.updatePostById = function (req, res, next) {
+    Posts.findByIdAndUpdate(req.params.id, {content: req.body.content})
+      .then(function (post) {
+        return res.sendStatus(200);
+      })
+      .catch(function (err) {
+        return next(err);
+      });
+  }
