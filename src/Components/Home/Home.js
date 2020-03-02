@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getPostsAction } from '../../store/actions/postAction';
 
-import renderHTML from 'react-render-html';
-
 export class Home extends Component {
   componentDidMount () {
     this.props.getAllPosts();
@@ -13,15 +11,11 @@ export class Home extends Component {
 
   render() {
     let posts = this.props.posts ? this.props.posts.map(function (post) {
+      const image = require('../../assets/' + post.character + '.png')
       return (
         <div key={post._id}>
           <Link to={'/post/' + post._id}>
-            <h3>
-              {post.title}
-            </h3>
-            <p>
-              {renderHTML(post.content)}
-            </p>
+            <img width="100px" height="100px;" src={image} alt={post.title} />
           </Link>
         </div>
       )
