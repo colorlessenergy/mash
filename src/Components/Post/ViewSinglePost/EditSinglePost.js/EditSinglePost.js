@@ -79,7 +79,6 @@ class EditSinglePost extends Component {
 
     const idOfPost = this.props.match.params.id;
     const history = this.props.history;
-    console.log(history)
     this.props.updateSinglePost(idOfPost, this.state.content, history)
   }
 
