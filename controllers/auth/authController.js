@@ -32,7 +32,7 @@ exports.loginUser = function (req, res, next) {
           _id: user._id,
           username: user.username
         }
-
+        
         let token = JWT.sign(payload, config.secret);
 
         user.token = token;
@@ -77,6 +77,26 @@ exports.validateToken = function (req, res, next) {
       req.user = decoded;
 
       next();
+    })
+    .catch(function (err) {
+      return next(err);
+    })
+}
+
+exports.logoutUser = function (req, res, next) {
+  User.findById(req.user._id)
+    .then(function (user) {
+      if (!user) next(err);
+
+      req.user = '';
+      user.token = '';
+
+      user.save()
+        .then(function () {
+          return res.sendStatus(200);
+        })
+        .catch(err => next(err))
+
     })
     .catch(function (err) {
       return next(err);
