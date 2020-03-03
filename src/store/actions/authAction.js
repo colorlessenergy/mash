@@ -31,3 +31,17 @@ export const loginUserAction = (credentials) => {
 export const unauthorizedUser = () => {
   localStorage.removeItem('token');
 }
+
+
+export const logoutUserAction = () => {
+  return (dispatch, getState) => {
+    fetch(config.BACKEND_URL + '/auth', {
+      headers: { 'Content-Type': 'application/json', 'authorization': localStorage.getItem('token') },
+      method: 'DELETE',
+    })
+    .then(function (res) {
+      dispatch({ type: actionTypes.LOGOUT_USER_SUCCESS  });
+    });
+
+  }
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  BrowserRouter,
   Switch,
   Route
 } from 'react-router-dom';
@@ -17,14 +16,12 @@ function App() {
   return (
     <div className="App">
       <Layout>
-        <BrowserRouter>
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/login' exact component={Login} />
             <Route path='/post/:id' exact component={ViewSinglePost} />
             <Route path='/post/edit/:id' exact component={EditSinglePost} />
           </Switch>
-        </BrowserRouter>
       </Layout>
     </div>
   );
