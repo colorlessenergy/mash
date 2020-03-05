@@ -6,16 +6,18 @@ import { logoutUserAction } from '../store/actions/authAction';
 
 import { Link, withRouter } from 'react-router-dom';
 
+import classes from './Layout.module.css';
+
 class Layout extends Component {
   render () {
     return (
       <div>
-        <nav>
-          <h1>
-            <Link to='/'>
+        <nav className={classes['nav']}>
+          <h2>
+            <Link className={classes['nav__title']} to='/'>
               mash
             </Link>
-          </h1>
+          </h2>
 
           { localStorage.token ? (
             <p onClick={this.logoutUser}>
