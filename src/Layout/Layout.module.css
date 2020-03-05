@@ -1,0 +1,10 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__title {
+  color: #E6E49F;
+  text-decoration: none;
+}

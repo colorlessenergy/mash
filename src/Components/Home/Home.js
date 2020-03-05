@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getPostsAction } from '../../store/actions/postAction';
 
+import classes from './Home.module.css';
+
 export class Home extends Component {
   state = {
     character: '',
@@ -55,7 +57,7 @@ export class Home extends Component {
       return (
         <div key={post._id}>
           <Link to={'/post/' + post._id}>
-            <img width="100px" height="100px;" src={image} alt={post.title} />
+            <img className={classes['post__image']} src={image} alt={post.title} />
           </Link>
         </div>
       )
@@ -63,15 +65,20 @@ export class Home extends Component {
 
     return (
       <div>
-        <form>
+        <form className={classes['filter-form']}>
           <label htmlFor="character"></label>
-          <input type="text"
+          <input
+            autoComplete="off"
+            className={classes['filter-form__input']}
+            type="text"
             onChange={this.handleChange}
             id="character"
             placeholder="search for a character"
             value={this.state.character} />
         </form>
-        { posts }
+        <div className={classes['posts']}>
+          { posts }
+        </div>
       </div>
     )
   }
