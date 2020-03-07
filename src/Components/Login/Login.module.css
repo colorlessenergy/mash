@@ -1,0 +1,29 @@
+.form__group {
+  margin: 10px 0;
+
+  display: flex;
+  align-items: flex-start;  
+  flex-direction: column;
+}
+
+.form__label {
+  margin-bottom: 10px;
+
+  text-transform: capitalize;
+}
+
+.form__button {
+  border: none;
+  padding: 5px 10px;
+  outline: none;
+
+  background-color: #e6ade2;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.form__button:hover {
+  background-color: #e8bde5;
+}

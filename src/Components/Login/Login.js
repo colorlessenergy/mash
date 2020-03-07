@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import { loginUserAction } from '../../store/actions/authAction';
 
+import classes from './Login.module.css';
+
 export class Login extends Component {
   state = {
     email: '',
@@ -53,33 +55,41 @@ export class Login extends Component {
         <form
           onSubmit={this.handleSubmit}>
 
-          <div>
-            <label htmlFor="email">
+          <div className={classes['form__group']}>
+            <label 
+              className={classes['form__label']}
+              htmlFor="email">
               email
             </label>
             <input
+              className={classes['form__input']}
               type="email"
               id="email"
               name="email"
+              placeholder='email'
               onChange={this.handleChange}
               value={this.state.email}/>
           </div>
 
-          <div>
+          <div className={classes['form__group']}>
             <label
+              className={classes['form__label']}
               htmlFor="password">
               password
             </label>
             <input
+              className={classes['form__input']}
               type="password"
               id="password"
               name="password"
+              placeholder='password'
               onChange={this.handleChange}
               value={this.state.password} />
           </div>
 
-          <button>
-            submit
+          <button
+            className={classes['form__button']}>
+            login
           </button>
 
           { this.state.missingInformationError ? (
