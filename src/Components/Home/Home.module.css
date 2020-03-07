@@ -9,6 +9,21 @@
   margin-bottom: 25px;
 }
 
+.filter-form__input {
+  padding: 10px 15px;
+
+  background-color: #1B998B;
+  color: #E6E49F;
+  font-size: 18px;
+}
+
+/* change placeholder color */
+
+::placeholder {
+  color: #E6E49F;
+  opacity: 1;
+}
+
 .post__image {
   height: 100px;
   width: 100px;

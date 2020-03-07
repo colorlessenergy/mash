@@ -69,6 +69,7 @@ export class Home extends Component {
           <label htmlFor="character"></label>
           <input
             autoComplete="off"
+            className={classes['filter-form__input']}
             type="text"
             onChange={this.handleChange}
             id="character"
