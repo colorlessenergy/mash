@@ -68,7 +68,7 @@ exports.validateToken = function (req, res, next) {
 
   User.findById(decoded._id)
     .then(function (user) {
-      if (!user) next(err);
+      if (!user) return res.status(403).send('Invalid User');;
 
       if (token !== user.token) {
         return res.status(403).send('Expired Token');
@@ -86,7 +86,7 @@ exports.validateToken = function (req, res, next) {
 exports.logoutUser = function (req, res, next) {
   User.findById(req.user._id)
     .then(function (user) {
-      if (!user) next(err);
+      if (!user) return res.status(403).send('Invalid User');;
 
       req.user = '';
       user.token = '';
