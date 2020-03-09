@@ -37,6 +37,31 @@ code {
     monospace;
 }
 
+/* override styles of text editor quill */
+
+.ql-snow .ql-stroke, 
+.ql-snow .ql-stroke.ql-fill,
+.ql-editor {
+  stroke: #fff !important;
+}
+
+
+.ql-editor {
+  color: #E6E49F;
+  font-size: 16px;
+}
+
+.ql-snow .ql-fill {
+  fill: #fff !important;
+}
+
+.ql-snow.ql-toolbar button:hover .ql-fill,
+.ql-snow.ql-toolbar button:hover {
+  color: #41caad !important;
+  fill: #41caad !important;
+}
+
+
 
 @media screen and (min-width: 1061px){
   .App {
