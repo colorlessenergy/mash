@@ -7,6 +7,8 @@ import { getSinglePostAction } from '../../../store/actions/postAction';
 
 import renderHTML from 'react-render-html';
 
+import classes from './ViewSinglePost.module.css';
+
 class ViewSinglePost extends Component {
   componentDidMount () {
     const idOfPost = this.props.match.params.id;
@@ -19,18 +21,27 @@ class ViewSinglePost extends Component {
 
     if (localStorage.getItem('token')) {
       LinkToBeAbleToEdit = (
-        <Link to={'/post/edit/' + this.props.match.params.id}> edit this page! </Link>
+        <Link 
+          className={classes['link']} 
+          to={'/post/edit/' + this.props.match.params.id}> edit this page! </Link>
       )
     }
 
+    let imageSrc;
+
+    if (this.props.post) {
+      imageSrc = require('../../../assets/' + this.props.post.character + '.png');
+    }
+
     const Post = this.props.post ? (
-      <div>
-        <h1>
-          {this.props.post.title}
-        </h1>
-        <p>
+      <div className={classes['contain-post']}>
+        <header className={classes['header']}>
+          <img className={classes['header__image']} src={imageSrc} alt={'image of ' + this.props.post.character} />
+          <h1 className={classes['header__title']}>{this.props.post.title}</h1>
+        </header>
+        <div className={classes['content']}>
           {renderHTML(this.props.post.content)}
-        </p>
+        </div>
       </div>
     ) : (<p> loading </p>);
 
