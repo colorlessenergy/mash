@@ -7,6 +7,8 @@ import { getSinglePostAction } from '../../../../store/actions/postAction';
 
 import { updateSinglePostAction } from '../../../../store/actions/postAction';
 
+import classes from './EditSinglePost.module.css';
+
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -94,10 +96,7 @@ class EditSinglePost extends Component {
 
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label
-              htmlFor='content'>
-              content
-            </label>
+            <label htmlFor='content'></label>
             <ReactQuill
               id="content"
               modules={this.modules}
@@ -107,7 +106,7 @@ class EditSinglePost extends Component {
               onChange={this.handleChange} />
           </div>
 
-          <button>
+          <button className={classes['button']}>
             edit
           </button>
         </form>
