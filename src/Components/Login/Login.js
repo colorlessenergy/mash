@@ -30,7 +30,9 @@ export class Login extends Component {
         missingInformationError: errorMessage
       });
     } else {
-      this.props.loginUser(this.state);
+      let history = this.props.history;
+
+      this.props.loginUser(this.state, history);
 
       this.setState({
         missingInformationError: ''
@@ -43,6 +45,8 @@ export class Login extends Component {
     this.setState({
       [ev.target.id]: ev.target.value
     });
+
+    console.log(this.props)
   }
 
   render() {
@@ -122,8 +126,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginUser: (credentials) => {
-      dispatch(loginUserAction(credentials));
+    loginUser: (credentials, history) => {
+      dispatch(loginUserAction(credentials, history));
     }
   }
 }

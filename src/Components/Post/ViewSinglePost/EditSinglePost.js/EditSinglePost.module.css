@@ -5,9 +5,20 @@
   background-color: #FFEB3B;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
   font-size: 18px;
   font-weight: bold;
   width: 30%;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.content {
+  width: 80%;
+}
+
+@media screen and (max-width: 961px) {
+  .content {
+    width: 100%;
+  }
 }

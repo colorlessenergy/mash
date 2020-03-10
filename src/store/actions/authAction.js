@@ -1,7 +1,7 @@
 import * as actionTypes from'./actionTypes';
 const config = require('../../config/config');
 
-export const loginUserAction = (credentials) => {
+export const loginUserAction = (credentials, history) => {
   return (dispatch, getState) => {
     fetch(config.BACKEND_URL + '/auth', {
       headers: { 'Content-Type': 'application/json' },
@@ -17,6 +17,8 @@ export const loginUserAction = (credentials) => {
         .json()
         .then(token => {
           localStorage.setItem('token', token.token);
+          
+          history.push('/');
           dispatch({ type: actionTypes.LOGIN_SUCCESS });
       });
     })

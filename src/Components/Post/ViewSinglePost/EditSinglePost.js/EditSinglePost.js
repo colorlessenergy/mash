@@ -23,8 +23,8 @@ class EditSinglePost extends Component {
 
   modules = {
     toolbar: [
-      [{ header: '1' }, { header: '2' }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ header: '2' }],
+      ['bold', 'italic', 'underline', 'strike'],
       [{ list: 'ordered' }, { list: 'bullet' }],
       ['link'],
       ['code-block']
@@ -37,7 +37,6 @@ class EditSinglePost extends Component {
     'italic',
     'underline',
     'strike',
-    'blockquote',
     'list',
     'bullet',
     'link',
@@ -99,6 +98,7 @@ class EditSinglePost extends Component {
             <label htmlFor='content'></label>
             <ReactQuill
               id="content"
+              className={classes['content']}
               modules={this.modules}
               formats={this.formats}
               value={this.state.content}
