@@ -42,7 +42,7 @@ export class Home extends Component {
 
   handleChange = (ev) => {
     let filteredPost = this.props.posts.filter((post) => {
-      return post.character.toLowerCase().includes(ev.target.value);
+      return post.character.toLowerCase().includes(ev.target.value.toLowerCase().trim());
     });
 
     this.setState({
